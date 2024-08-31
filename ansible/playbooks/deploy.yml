@@ -1,5 +1,7 @@
 ---
 - hosts: local
+  become: yes
+
   tasks:
     - name: Ensure Docker is installed
       apt:
