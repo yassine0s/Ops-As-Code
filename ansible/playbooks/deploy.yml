@@ -10,7 +10,7 @@
         update_cache: yes
 
     - name: Build Docker image
-      shell: docker build -t my-python-app .
+      shell: docker build -t my-python-app . -f Dockerfile
       args:
         chdir: "{{ ansible_env.PWD }}"
 
