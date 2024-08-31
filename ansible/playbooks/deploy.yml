@@ -10,9 +10,9 @@
         update_cache: yes
 
     - name: Build Docker image
-      shell: docker build -t my-python-app . -f Dockerfile
+      shell: docker build -t my-python-app .
       args:
-        chdir: "{{ ansible_env.PWD }}"
+        chdir: "{{ ansible_env.PWD }}/app"
 
     - name: Run Docker container
       shell: docker run --rm my-python-app
