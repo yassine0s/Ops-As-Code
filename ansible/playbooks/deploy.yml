@@ -1,0 +1,18 @@
+---
+- hosts: local
+  tasks:
+    - name: Ensure Docker is installed
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Build Docker image
+      shell: docker build -t my-python-app .
+      args:
+        chdir: "{{ ansible_env.PWD }}"
+
+    - name: Run Docker container
+      shell: docker run --rm my-python-app
+      args:
+        chdir: "{{ ansible_env.PWD }}"
