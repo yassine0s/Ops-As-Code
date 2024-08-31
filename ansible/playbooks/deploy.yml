@@ -9,14 +9,10 @@
         state: present
         update_cache: yes
 
-    - name: Print the target directory
-      debug:
-        msg: "The target directory is: {{ ansible_env.PWD}}/../../app"
-
     - name: Build Docker image
       shell: docker build -t my-python-app . -f Dockerfile
       args:
-        chdir: "{{ ansible_env.PWD}}/../../app"
+        chdir: "{{ github_workspace }}" 
 
     - name: Run Docker container
       shell: docker run --rm my-python-app
