@@ -12,9 +12,8 @@
     - name: Build Docker image
       shell: docker build -t my-python-app . -f Dockerfile
       args:
-        chdir: "{{ github_workspace }}" 
+        chdir: "{{ lookup('env', 'GITHUB_WORKSPACE') }}/app"
 
     - name: Run Docker container
       shell: docker run --rm my-python-app
-      args:
-        chdir: "{{ ansible_env.PWD }}"
+
