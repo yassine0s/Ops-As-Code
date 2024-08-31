@@ -12,7 +12,7 @@
     - name: Build Docker image
       shell: docker build -t my-python-app .
       args:
-        chdir: "{{ ansible_env.PWD | dirname | dirname }}/app"
+        chdir: "{{ ansible_env.PWD}}/../../app"
 
     - name: Run Docker container
       shell: docker run --rm my-python-app
